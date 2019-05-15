@@ -6,7 +6,6 @@ public class Solution
         Array.Sort(intervals, new IntervalComparer());
         foreach(int[] interval in intervals)
         {
-            //int[] lastInterval = mergedIntervals.Last();
             if(mergedIntervals.Count < 1 || interval[0] > mergedIntervals.Last()[1])
             {
                 mergedIntervals.Add(interval);
