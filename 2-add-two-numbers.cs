@@ -1,32 +1,37 @@
-public class Solution
+public ListNode AddTwoNumbers(ListNode num1, ListNode num2)
 {
-    public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
-    {
-        ListNode previous = new ListNode(0);
-        ListNode result = previous;
-        int carry = 0;
-        while (l1 != null || l2 != null || carry != 0)
-        {
-            ListNode current = new ListNode(0);
-            int sum = ((l2 == null) ? 0 : l2.val) + ((l1 == null) ? 0 : l1.val) + carry;
-            current.val = sum % 10;
-            carry = sum / 10;
-            previous.next = current;
-            previous = current;
+    ListNode temp = new ListNode(0);
+    ListNode result = temp;
 
-            l1 = (l1 == null) ? l1 : l1.next;
-            l2 = (l2 == null) ? l2 : l2.next;
-        }
-        return result.next;
+    int carry = 0;
+
+    while (num1 != null || num2 != null || carry > 0)
+    {
+        int num1Current = (num1 != null) ? num1.Value : 0;
+        int num2Current = (num2 != null) ? num2.Value : 0;
+
+        int currentSum = num1Current + num2Current + carry;
+        carry = currentSum / 10;
+
+        ListNode currentNode = new ListNode(currentSum % 10);
+        temp.Next = currentNode;
+        temp = temp.Next;
+
+        num1 = (num1 != null) ? num1.Next : num1;
+        num2 = (num2 != null) ? num2.Next : num2;
     }
+
+    return result.Next;
 }
 
 public class ListNode
 {
-    public int val;
-    public ListNode next;
-    public ListNode(int x)
+    public ListNode(int value)
     {
-        val = x;
+        Value = value;
     }
+
+    public int Value { get; set; }
+
+    public ListNode Next { get; set; }
 }
