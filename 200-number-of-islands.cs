@@ -24,7 +24,7 @@ public class Solution
             {
                 if (this.grid[row][col] == '1')
                 {
-                    numIslands++;
+                    numIslands++; // increment number of islands found after 'breaking land'
 
                     // trigger BFS in order to mark island as 'visited':
                     BreadthFirstIslandTraversal(new Coordinate
@@ -37,7 +37,7 @@ public class Solution
         }
 
         return numIslands;
-    }
+    }z
 
     private void BreadthFirstIslandTraversal(Coordinate start)
     {
